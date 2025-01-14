@@ -27,7 +27,8 @@ const Patient = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/patient", patientData);
+      // Use the environment variable for the API URL
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/patient`, patientData);
       setModalMessage("Patient details saved successfully!");
       setModalVisible(true);
       setPatientData({
